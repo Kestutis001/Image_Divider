@@ -31,13 +31,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.PictureBox_Image = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Button_Accept = new System.Windows.Forms.Button();
             this.TrackBar_Rows = new System.Windows.Forms.TrackBar();
             this.TrackBar_Columns = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Button_Browse_Img_Path = new System.Windows.Forms.Button();
+            this.Button_Browse_Save_Path = new System.Windows.Forms.Button();
             this.TextBox_Img_Path = new System.Windows.Forms.TextBox();
             this.TextBox_Save_Path = new System.Windows.Forms.TextBox();
             this.TextBox_Num_Cols = new System.Windows.Forms.TextBox();
@@ -73,33 +73,38 @@
             this.PictureBox_Image.TabIndex = 4;
             this.PictureBox_Image.TabStop = false;
             // 
-            // button1
+            // Button_Accept
             // 
-            this.button1.Location = new System.Drawing.Point(789, 35);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 50);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Accept";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Button_Accept.Location = new System.Drawing.Point(789, 35);
+            this.Button_Accept.Name = "Button_Accept";
+            this.Button_Accept.Size = new System.Drawing.Size(185, 50);
+            this.Button_Accept.TabIndex = 5;
+            this.Button_Accept.Text = "Accept";
+            this.Button_Accept.UseVisualStyleBackColor = true;
+            this.Button_Accept.Click += new System.EventHandler(this.Button_Accept_Click);
             // 
             // TrackBar_Rows
             // 
             this.TrackBar_Rows.Location = new System.Drawing.Point(77, 131);
             this.TrackBar_Rows.Maximum = 8;
+            this.TrackBar_Rows.Minimum = 1;
             this.TrackBar_Rows.Name = "TrackBar_Rows";
             this.TrackBar_Rows.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.TrackBar_Rows.Size = new System.Drawing.Size(56, 440);
             this.TrackBar_Rows.TabIndex = 6;
+            this.TrackBar_Rows.Value = 1;
             this.TrackBar_Rows.Scroll += new System.EventHandler(this.TrackBar_Rows_Scroll);
             // 
             // TrackBar_Columns
             // 
             this.TrackBar_Columns.Location = new System.Drawing.Point(136, 577);
             this.TrackBar_Columns.Maximum = 8;
+            this.TrackBar_Columns.Minimum = 1;
             this.TrackBar_Columns.Name = "TrackBar_Columns";
             this.TrackBar_Columns.Size = new System.Drawing.Size(838, 56);
             this.TrackBar_Columns.TabIndex = 7;
             this.TrackBar_Columns.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.TrackBar_Columns.Value = 1;
             this.TrackBar_Columns.Scroll += new System.EventHandler(this.TrackBar_Columns_Scroll);
             // 
             // label3
@@ -123,25 +128,25 @@
             this.label4.Text = "R\r\no\r\nw\r\ns";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // button2
+            // Button_Browse_Img_Path
             // 
-            this.button2.Location = new System.Drawing.Point(419, 41);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Browse";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button_Img_Path_Click);
+            this.Button_Browse_Img_Path.Location = new System.Drawing.Point(419, 41);
+            this.Button_Browse_Img_Path.Name = "Button_Browse_Img_Path";
+            this.Button_Browse_Img_Path.Size = new System.Drawing.Size(75, 23);
+            this.Button_Browse_Img_Path.TabIndex = 10;
+            this.Button_Browse_Img_Path.Text = "Browse";
+            this.Button_Browse_Img_Path.UseVisualStyleBackColor = true;
+            this.Button_Browse_Img_Path.Click += new System.EventHandler(this.Button_Img_Path_Click);
             // 
-            // button3
+            // Button_Browse_Save_Path
             // 
-            this.button3.Location = new System.Drawing.Point(419, 79);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Browse";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button_Save_Path_Click);
+            this.Button_Browse_Save_Path.Location = new System.Drawing.Point(419, 79);
+            this.Button_Browse_Save_Path.Name = "Button_Browse_Save_Path";
+            this.Button_Browse_Save_Path.Size = new System.Drawing.Size(75, 23);
+            this.Button_Browse_Save_Path.TabIndex = 11;
+            this.Button_Browse_Save_Path.Text = "Browse";
+            this.Button_Browse_Save_Path.UseVisualStyleBackColor = true;
+            this.Button_Browse_Save_Path.Click += new System.EventHandler(this.Button_Save_Path_Click);
             // 
             // TextBox_Img_Path
             // 
@@ -167,7 +172,7 @@
             this.TextBox_Num_Cols.ReadOnly = true;
             this.TextBox_Num_Cols.Size = new System.Drawing.Size(18, 21);
             this.TextBox_Num_Cols.TabIndex = 14;
-            this.TextBox_Num_Cols.Text = "0";
+            this.TextBox_Num_Cols.Text = "1";
             // 
             // TextBox_Num_Rows
             // 
@@ -177,7 +182,7 @@
             this.TextBox_Num_Rows.ReadOnly = true;
             this.TextBox_Num_Rows.Size = new System.Drawing.Size(18, 21);
             this.TextBox_Num_Rows.TabIndex = 15;
-            this.TextBox_Num_Rows.Text = "0";
+            this.TextBox_Num_Rows.Text = "1";
             // 
             // Form1
             // 
@@ -188,13 +193,13 @@
             this.Controls.Add(this.TextBox_Num_Cols);
             this.Controls.Add(this.TextBox_Save_Path);
             this.Controls.Add(this.TextBox_Img_Path);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.Button_Browse_Save_Path);
+            this.Controls.Add(this.Button_Browse_Img_Path);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TrackBar_Columns);
             this.Controls.Add(this.TrackBar_Rows);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Button_Accept);
             this.Controls.Add(this.PictureBox_Image);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -213,13 +218,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox PictureBox_Image;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Button_Accept;
         private System.Windows.Forms.TrackBar TrackBar_Rows;
         private System.Windows.Forms.TrackBar TrackBar_Columns;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Button_Browse_Img_Path;
+        private System.Windows.Forms.Button Button_Browse_Save_Path;
         private System.Windows.Forms.TextBox TextBox_Img_Path;
         private System.Windows.Forms.TextBox TextBox_Save_Path;
         private System.Windows.Forms.TextBox TextBox_Num_Cols;

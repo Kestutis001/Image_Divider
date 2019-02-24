@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Emgu.CV;
 
 namespace  Image_Information
 {
@@ -18,6 +19,9 @@ namespace  Image_Information
 
         /* Number of colunms. Between 0 and 8. */
         public int NUM_COLS { get; set; } = 0;
+
+        /* Image with segmented lines. */
+        public Mat Image_With_lines { get; set; }
     }
 }
 
