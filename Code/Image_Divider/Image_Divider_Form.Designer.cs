@@ -30,19 +30,21 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PictureBox_Image = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.Rows = new System.Windows.Forms.TrackBar();
-            this.Columns = new System.Windows.Forms.TrackBar();
+            this.TrackBar_Rows = new System.Windows.Forms.TrackBar();
+            this.TrackBar_Columns = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Rows)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Columns)).BeginInit();
+            this.TextBox_Img_Path = new System.Windows.Forms.TextBox();
+            this.TextBox_Save_Path = new System.Windows.Forms.TextBox();
+            this.TextBox_Num_Cols = new System.Windows.Forms.TextBox();
+            this.TextBox_Num_Rows = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Image)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Rows)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Columns)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -63,13 +65,13 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Save Path:";
             // 
-            // pictureBox1
+            // PictureBox_Image
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(136, 131);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(838, 440);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.PictureBox_Image.Location = new System.Drawing.Point(136, 131);
+            this.PictureBox_Image.Name = "PictureBox_Image";
+            this.PictureBox_Image.Size = new System.Drawing.Size(838, 440);
+            this.PictureBox_Image.TabIndex = 4;
+            this.PictureBox_Image.TabStop = false;
             // 
             // button1
             // 
@@ -80,31 +82,31 @@
             this.button1.Text = "Accept";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // Rows
+            // TrackBar_Rows
             // 
-            this.Rows.Location = new System.Drawing.Point(74, 131);
-            this.Rows.Maximum = 8;
-            this.Rows.Name = "Rows";
-            this.Rows.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.Rows.Size = new System.Drawing.Size(56, 440);
-            this.Rows.TabIndex = 6;
-            this.Rows.Scroll += new System.EventHandler(this.TrackBar_Rows_Scroll);
+            this.TrackBar_Rows.Location = new System.Drawing.Point(77, 131);
+            this.TrackBar_Rows.Maximum = 8;
+            this.TrackBar_Rows.Name = "TrackBar_Rows";
+            this.TrackBar_Rows.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.TrackBar_Rows.Size = new System.Drawing.Size(56, 440);
+            this.TrackBar_Rows.TabIndex = 6;
+            this.TrackBar_Rows.Scroll += new System.EventHandler(this.TrackBar_Rows_Scroll);
             // 
-            // Columns
+            // TrackBar_Columns
             // 
-            this.Columns.Location = new System.Drawing.Point(136, 577);
-            this.Columns.Maximum = 8;
-            this.Columns.Name = "Columns";
-            this.Columns.Size = new System.Drawing.Size(838, 56);
-            this.Columns.TabIndex = 7;
-            this.Columns.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
-            this.Columns.Scroll += new System.EventHandler(this.TrackBar_Columns_Scroll);
+            this.TrackBar_Columns.Location = new System.Drawing.Point(136, 577);
+            this.TrackBar_Columns.Maximum = 8;
+            this.TrackBar_Columns.Name = "TrackBar_Columns";
+            this.TrackBar_Columns.Size = new System.Drawing.Size(838, 56);
+            this.TrackBar_Columns.TabIndex = 7;
+            this.TrackBar_Columns.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.TrackBar_Columns.Scroll += new System.EventHandler(this.TrackBar_Columns_Scroll);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.Location = new System.Drawing.Point(521, 613);
+            this.label3.Location = new System.Drawing.Point(521, 614);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 20);
             this.label3.TabIndex = 8;
@@ -141,45 +143,67 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button_Save_Path_Click);
             // 
-            // textBox1
+            // TextBox_Img_Path
             // 
-            this.textBox1.Location = new System.Drawing.Point(102, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(311, 22);
-            this.textBox1.TabIndex = 12;
+            this.TextBox_Img_Path.Location = new System.Drawing.Point(102, 42);
+            this.TextBox_Img_Path.Name = "TextBox_Img_Path";
+            this.TextBox_Img_Path.ReadOnly = true;
+            this.TextBox_Img_Path.Size = new System.Drawing.Size(311, 22);
+            this.TextBox_Img_Path.TabIndex = 12;
             // 
-            // textBox2
+            // TextBox_Save_Path
             // 
-            this.textBox2.Location = new System.Drawing.Point(102, 80);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(311, 22);
-            this.textBox2.TabIndex = 13;
+            this.TextBox_Save_Path.Location = new System.Drawing.Point(102, 80);
+            this.TextBox_Save_Path.Name = "TextBox_Save_Path";
+            this.TextBox_Save_Path.ReadOnly = true;
+            this.TextBox_Save_Path.Size = new System.Drawing.Size(311, 22);
+            this.TextBox_Save_Path.TabIndex = 13;
+            // 
+            // TextBox_Num_Cols
+            // 
+            this.TextBox_Num_Cols.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.TextBox_Num_Cols.Location = new System.Drawing.Point(136, 614);
+            this.TextBox_Num_Cols.Name = "TextBox_Num_Cols";
+            this.TextBox_Num_Cols.ReadOnly = true;
+            this.TextBox_Num_Cols.Size = new System.Drawing.Size(18, 21);
+            this.TextBox_Num_Cols.TabIndex = 14;
+            this.TextBox_Num_Cols.Text = "0";
+            // 
+            // TextBox_Num_Rows
+            // 
+            this.TextBox_Num_Rows.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.TextBox_Num_Rows.Location = new System.Drawing.Point(53, 550);
+            this.TextBox_Num_Rows.Name = "TextBox_Num_Rows";
+            this.TextBox_Num_Rows.ReadOnly = true;
+            this.TextBox_Num_Rows.Size = new System.Drawing.Size(18, 21);
+            this.TextBox_Num_Rows.TabIndex = 15;
+            this.TextBox_Num_Rows.Text = "0";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(996, 658);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1006, 676);
+            this.Controls.Add(this.TextBox_Num_Rows);
+            this.Controls.Add(this.TextBox_Num_Cols);
+            this.Controls.Add(this.TextBox_Save_Path);
+            this.Controls.Add(this.TextBox_Img_Path);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Columns);
-            this.Controls.Add(this.Rows);
+            this.Controls.Add(this.TrackBar_Columns);
+            this.Controls.Add(this.TrackBar_Rows);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.PictureBox_Image);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Image Divider";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Rows)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Columns)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Image)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Rows)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBar_Columns)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,15 +212,17 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox PictureBox_Image;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TrackBar Rows;
-        private System.Windows.Forms.TrackBar Columns;
+        private System.Windows.Forms.TrackBar TrackBar_Rows;
+        private System.Windows.Forms.TrackBar TrackBar_Columns;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TextBox_Img_Path;
+        private System.Windows.Forms.TextBox TextBox_Save_Path;
+        private System.Windows.Forms.TextBox TextBox_Num_Cols;
+        private System.Windows.Forms.TextBox TextBox_Num_Rows;
     }
 }
