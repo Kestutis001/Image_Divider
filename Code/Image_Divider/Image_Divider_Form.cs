@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections.Generic;
 /* Open CV: */
 using Emgu.CV;
 using Emgu.CV.CvEnum;
@@ -47,6 +43,33 @@ namespace Image_Divider
                 var Img_File_Name = Get_Name();
                 string Img_File_Path = Path.Combine(img_info.SAVE_PATH, Img_File_Name + "_Divided");
                 Directory.CreateDirectory(Img_File_Path);
+                var imgs = Segment_Image_and_Save();
+                if (imgs == null)
+                {
+                    Directory.Delete(Img_File_Path);
+                }
+                else
+                {
+                    if(img_info.NUM_COLS * img_info.NUM_ROWS == 1)
+                    {
+                        
+                    }
+                    else
+                    {
+                        for(int i=0; i < imgs.Count; i++)  
+                        {
+                            string img_path = Path.Combine(Img_File_Path, "Img_" + i + ".jpg");
+                            try
+                            {
+                                imgs[i].Save(img_path);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("failed to save");
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -149,7 +172,7 @@ namespace Image_Divider
                         {
                             Line_Thickness = img_restaints.Line_Thickness_Huge;
                         }
-                        if (img.Size.Height > 2160 || img.Size.Width > 3840)
+                        if (img.Size.Height >= 2160 || img.Size.Width >= 3840)
                         {
                             Line_Thickness = img_restaints.Line_Thickness_Ultra;
                         }
@@ -177,9 +200,42 @@ namespace Image_Divider
             return true;
         }
 
-        private void Segment_Image_and_Save()
+        private List<Mat> Segment_Image_and_Save()
         {
+            Mat img = CvInvoke.Imread(img_info.IMG_PATH, ImreadModes.Color);                                                                                               //load in image as a colored Mat.           
+            List<Mat> images = new List<Mat>();
+            if (img.Size.Height < img_restaints.ROWS_MIN || img.Size.Width < img_restaints.COLS_MIN)                                                                       //Check restrains.
+            {
+                MessageBox.Show("Invalid Image Size. Image Must Be " + img_restaints.COLS_MIN.ToString() + "x" + img_restaints.ROWS_MIN.ToString() + " Or Larger.");       //Tell user if Image Is too small.
+                return images;
+            }
+            Mat img_to_add = new Mat();
+            var Row_Size = img.Size.Height / img_info.NUM_ROWS;
+            var Col_Size = img.Size.Width / img_info.NUM_COLS;
+            for (int i = 1; i <= img_info.NUM_COLS; i++)
+            {
+                for (int j = 1; j <= img_info.NUM_ROWS; j++)
+                {
+                    var temp_W = (i-1) * Col_Size;
+                    var temp_H = (j-1) * Row_Size;
+                    if (temp_W > img.Size.Width)
+                        temp_W = img.Size.Width;
+                    if (temp_H > img.Size.Height)
+                        temp_H = img.Size.Height;
+                    Rectangle ROI = new Rectangle(temp_W,temp_H, Col_Size, Row_Size);
+                    img_to_add = Crop_Image(img, ROI);
+                    images.Add(img_to_add);
+                }
+            }
+            return images;
+        }
 
+        private Mat Crop_Image(Mat input, Rectangle crop_region)
+        {
+            Image<Bgr, Byte> buffer_im = input.ToImage<Bgr, byte>();
+            buffer_im.ROI = crop_region;
+            Image<Bgr, byte> cropped_im = buffer_im.Copy();
+            return cropped_im.Mat;
         }
     }
 }
